@@ -1,85 +1,112 @@
-# Resolvendo Códigos em Python com o Github Copilot
+# Resolvendo Codigos em Python com GitHub Copilot
 
-Olá!! Aqui veremos algumas resoluções de códigos em python utilizando o Github Copilot.
+Projeto pratico inspirado no desafio da DIO para exercitar resolucao de algoritmos em Python com apoio de IA. A proposta combina GitHub Copilot (ou outra IA generativa) e GitHub Codespaces para mostrar como acelerar iteracoes de codigo, testes e documentacao.
 
-### Atenção ⚠️ 
+## Objetivos do desafio
+- Reproduzir e aprimorar solucoes de algoritmos baseadas no conteudo das aulas.
+- Praticar fluxo de trabalho com GitHub (fork, commits, README claro).
+- Utilizar Copilot para propor trechos de codigo, validar alternativas e revisar erros.
+- Registrar as decisoes tecnicas e aprendizados de maneira organizada.
 
-Não tem acesso ao Github Copilot?! Não tem problema!! 
-Que tal utilizar o [ChatGPT](https://chat.openai.com/) como seu copiloto de estudos ??
+## Conteudo do repositorio
+- `main.py`: ponto de entrada simples que expande um menu interativo no terminal.
+- `resolucoes_code/`: modulos com funcoes puras e helpers interativos para cada exercicio.
+- `tests/`: verificacoes automatizadas usando `pytest`.
+- `requirements-dev.txt`: dependencias opcionais para rodar os testes localmente.
 
-## 1 - Concatenando Dados 🐾
+### Estrutura de pastas
+```
+resolvendo-codigos-py-copilot/
+├── main.py
+├── requirements-dev.txt
+├── resolucoes_code/
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── concat_dados.py
+│   ├── media_notas.py
+│   ├── ope_mat.py
+│   ├── palindromo.py
+│   ├── paridade.py
+│   └── repet_txt.py
+└── tests/
+    └── test_algorithms.py
+```
 
-Descrição:
-Vamos receber dois dados diferentes do usuário e concatena-los em uma única string?! 
+### Detalhes dos algoritmos
 
-O que aprenderemos?
+#### palindromo.py
+Verifica se uma palavra ou frase é um palíndromo (lê-se igual de trás para frente).
 
-* Manipulação de Strings (string)
-* Concatenação
-* Entrada de dados
-* Utilização eficiente do Github Copilot
+**Funcionalidades:**
+- `is_palindrome(text: str) -> bool`: Função principal que verifica se o texto é um palíndromo. Ignora maiúsculas, minúsculas, espaços e caracteres especiais.
+- `_normalize_text(text: str) -> str`: Função auxiliar que normaliza o texto removendo caracteres não alfanuméricos e convertendo para minúsculas.
+- `prompt_and_check() -> bool`: Função interativa que solicita entrada do usuário e exibe o resultado.
 
-<br>
+**Exemplos de palíndromos:**
+- "arara" → É um palíndromo!
+- "A base do teto desaba" → É um palíndromo!
+- "python" → Não é um palíndromo.
 
-## 2 - Repetindo Textos ✏️
+**Execução:**
+```bash
+python -m resolucoes_code.palindromo
+```
 
-Descrição:
-Agora vamos solicitar uma string e um número inteiro como entrada. Depois teremos que retornar a string repetida o número de vezes informado. 
+## Preparacao do ambiente local
+1. Crie ou ative um ambiente virtual (recomendado):
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # PowerShell: .venv\\Scripts\\Activate.ps1
+   ```
+2. Instale as dependencias de desenvolvimento caso deseje rodar os testes:
+   ```bash
+   pip install -r requirements-dev.txt
+   ```
 
-O que aprenderemos?
+## Executando os algoritmos localmente
+- Menu interativo completo:
+  ```bash
+  python main.py
+  ```
+- Voce tambem pode chamar modulos isolados:
+  ```bash
+  python -m resolucoes_code.concat_dados
+  python -m resolucoes_code.repet_txt
+  python -m resolucoes_code.ope_mat
+  ```
+  Cada modulo oferece prompts rapidos para praticar entradas e validar resultados.
 
-* Manipulação de Strings (string)
-* Números Inteiros (int)
-* Múltiplas repetições
-* Entrada de dados
-* Aproveitar as sugestões do Github Copilot
+## Rodando no GitHub Codespaces
+1. Clique em **Code > Create codespace on main** (ou abra o fork no Codespaces).
+2. Aguarde o container finalizar o build. O Python ja vem configurado na imagem padrao.
+3. Ative o ambiente virtual (caso deseje) e instale `pytest` com o comando indicado acima.
+4. Use o terminal integrado para executar `python main.py` ou rode arquivos individuais.
+5. Aproveite a extensao do Copilot para gerar snippets, comentarios e testes automatizados.
 
-<br>
+## Como aproveitar o GitHub Copilot
+- Gere funcoes intermediarias (ex.: validacao de entrada, formatacao de strings) a partir de comentarios descritivos.
+- Solicite melhorias de legibilidade ou alternativas de algoritmo diretamente no editor.
+- Use o chat para explicar erros, mensagens de excecao e sugerir testes adicionais.
+- Compare versoes sugeridas com a sua solucao manual e registre o que mudou.
 
-## 3 - Operações Matemáticas Simples 📐
+Se o acesso ao Copilot nao estiver disponivel, use qualquer outra IA (como o ChatGPT) para simular o fluxo colaborativo e anote as sugestoes aceitas ou rejeitadas no README ou nos commits.
 
-Descrição:
-Vamos solicitar como entrada dois números e depois vamos realizar uma operação simples entre eles.
+## Testes automatizados
+Execute os testes com `pytest`:
+```bash
+pytest
+```
+Caso `pytest` nao esteja instalado, utilize `pip install -r requirements-dev.txt` ou rode `python -m compileall resolucoes_code` para apenas validar sintaxe rapidamente.
 
-O que aprenderemos?
+## Documentando suas decisoes
+- Registre no README (ou nos commits) o que foi gerado pela IA e o que voce ajustou manualmente.
+- Mencione dificuldades enfrentadas e como foram resolvidas.
+- Adicione capturas de tela ou snippets demonstrando a interacao com o Copilot/Codespaces, se julgar util.
 
-* Operações Matemáticas Básicas
-* Entrada de dados
-* Utilização eficiente do Github Copilot
+## Ideias de extensao
+- Criar uma interface web simples (Flask ou FastAPI) para expor os algoritmos.
+- Adicionar novos desafios ao pacote, como calculadora de juros compostos ou validacao de CPF.
+- Incluir testes de ponta a ponta usando `pytest` + `capfd` para validar as funcoes interativas.
+- Configurar GitHub Actions para rodar lint e testes nos commits.
 
-<br>
-
-## 4 - Verificando Números Pares e Ímpares 🧮
-
-Descrição: Como entrada, receba um número inteiro e verifique se ele é par ou ímpar. 
-Uma dica é: Utilize condicionais para realizar a verificação e, se possível, faça uso do Github Copilot(ou outra IA) para otimizar a estrutura do código.
-
-O que aprenderemos?
-* Utilização de condicionais em Python (if, else) para realizar verificações.
-* Introdução ao conceito de operador de módulo (%) para verificar se um número é par ou ímpar.
-* Exploração do uso de uma ferramenta de IA, como o Github Copilot, para otimizar a estrutura do código.
-
-
-<br>
-
-## 5 - Calculando Média de Notas 📚
-
-Descrição: Agora vamos calcular a média de três notas fornecidas na entrada do usuário. 
-Uma dica é: Utilize operadores aritméticos para realizar o cálculo da média.
-
-O que aprenderemos?
-* Uso de variáveis para armazenar dados fornecidos pelo usuário.
-* Aplicação de operadores aritméticos (+, /) para calcular a média de um conjunto de valores.
-* Prática na solicitação e manipulação de entrada do usuário.
-
-<br>
-
-## 6 - Verificando Palíndromos 🔄
-
-Descrição: Vamos testar se uma palavra é um palíndromo?! 
-Uma dica é: Utilize conceitos de manipulação de strings para inverter a palavra e comparar com a original.
-
-O que aprenderemos?
-* Manipulação de strings em Python, especialmente invertendo uma string.
-* Compreensão de como comparar a string original com sua versão invertida para determinar se é um palíndromo.
-* Introdução ao conceito de palíndromos e sua aplicação em problemas de programação.
+Bom estudo e bons commits!
